@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MacNicoPlayer（Re:仮）データベース</title>
+  <script src="https://unpkg.com/htmx.org@1.7.0"></script>
+  <script>
+    document.addEventListener('htmx:afterOnLoad', function(event) {
+      const target = document.querySelector('#data-list');
+      const data = JSON.parse(event.detail.xhr.responseText);
+      target.innerHTML = data.map(item => `<li><a href="http://nicovideo.jp/watch_tmp/${item.id}" target="_blank">${item.title.join(', ')}</li>`).join('\n');
+    });
+  </script>
+</head>
+<body>
+  <h1>MacNicoPlayer（Re:仮）データベース</h1>
+  <a href="">MacNicoPlayer（Re:仮）</a>でキャッシュした動画一覧です。
+  <ul id="data-list" hx-get="https://g4bvjgz8cj.execute-api.ap-northeast-1.amazonaws.com/Prod/all" hx-trigger="load"></ul>
+</body>
+</html>
