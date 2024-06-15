@@ -15,7 +15,12 @@
 </head>
 <body>
   <h1>MacNicoPlayer（Re:仮）データベース</h1>
-  <a href="">MacNicoPlayer（Re:仮）</a>でキャッシュした動画一覧です。
+  <a href="https://github.com/ANNotunzdY/mnp-rekari">MacNicoPlayer（Re:仮）</a>でキャッシュした動画一覧です。
+  <hr>
+  <form hx-get="https://g4bvjgz8cj.execute-api.ap-northeast-1.amazonaws.com/Prod/search" hx-target="#data-list" hx-include="[name='q']">
+    <input type="text" name="q" placeholder="タイトルで検索" required>
+    <button type="submit">検索</button>
+  </form>
   <ul id="data-list" hx-get="https://g4bvjgz8cj.execute-api.ap-northeast-1.amazonaws.com/Prod/all" hx-trigger="load"></ul>
 </body>
 </html>
